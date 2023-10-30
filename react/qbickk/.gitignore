@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+git rm .idea/ -r --cached
+git add -u .idea/
+git commit -m "Removed the .idea folder"

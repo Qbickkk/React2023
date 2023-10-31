@@ -1,9 +1,10 @@
 import React from 'react';
+import FirstComponent from "./components/first-component/FirstComponent";
 
 const App = () => {
     return (
         <div>
-            App
+            <FirstComponent/>
         </div>
     );
 };

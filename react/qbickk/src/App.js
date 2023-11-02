@@ -1,9 +1,10 @@
 import React from 'react';
+import {UsersComponent} from "./components/users/UsersComponent";
 
 const App = () => {
     return (
         <div>
-            App preview1
+            <UsersComponent/>
         </div>
     );
 };

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 
 import css from './Users.module.css';
 import {User} from "./User/User";
-import {axiosService} from "../../../services/axiosService";
 import {userService} from "../../../services/userService";
 
 

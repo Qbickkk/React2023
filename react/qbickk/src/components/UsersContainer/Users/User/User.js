@@ -1,7 +1,6 @@
 import React from 'react';
 
 import css from './User.module.css';
-import {userService} from "../../../../services/userService";
 
 const User = ({user, click}) => {
     const {id, name, username} = user;

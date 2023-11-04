@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getAllUsers} from "../../services/axiosService";
 import {UserComponent} from "./user/UserComponent";
 
-const UsersComponent = ({foobar}) => {
+const UsersComponent = ({chooseUser}) => {
 
     const [users,setUsers] = useState([]);
 
@@ -12,7 +12,7 @@ const UsersComponent = ({foobar}) => {
 
     return (
         <div>
-            {users.map(user=><UserComponent key={user.id} item={user} foobar={foobar}/>)}
+            {users.map(user=><UserComponent key={user.id} item={user} chooseUser={chooseUser}/>)}
         </div>
     );
 };

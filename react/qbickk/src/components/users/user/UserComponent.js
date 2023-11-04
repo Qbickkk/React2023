@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserComponent = ({item, foobar}) => {
+const UserComponent = ({item, chooseUser}) => {
     const {name,id,username} = item;
     return (
         <div>
@@ -8,7 +8,7 @@ const UserComponent = ({item, foobar}) => {
             <h2>{username}</h2>
             <div>{id}</div>
             <button onClick={()=>{
-                foobar('test');
+                chooseUser(item);
             }}>Details</button>
             <hr/>
         </div>

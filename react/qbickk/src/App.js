@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {getAllUsers, getById} from "./services/axiosService";
 import {UsersComponent} from "./components/users/UsersComponent";
 
 

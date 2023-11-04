@@ -1,18 +1,18 @@
 import React, {useEffect} from 'react';
 import {getAllUsers, getById} from "./services/axiosService";
+import {UsersComponent} from "./components/users/UsersComponent";
 
 
 const App = () => {
 
-    useEffect(() => {
-        getAllUsers().then(value => console.log(value.data));
-        getById(9).then(value => console.log(value));
-    }, []);
+    const foobar = (info) => {
+        console.log(info);
 
+    }
 
     return (
         <div>
-            App
+            <UsersComponent foobar={foobar}/>
         </div>
     );
 };

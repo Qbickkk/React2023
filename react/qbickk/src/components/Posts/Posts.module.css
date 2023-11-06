@@ -1,0 +1,7 @@
+.Posts{
+    display: flex;
+    flex-flow: row wrap;
+}
+.Main{
+    display: block;
+}

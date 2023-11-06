@@ -1,0 +1,10 @@
+.Details{
+    margin: 10px;
+    border: 2px solid darkred;
+    width: calc(50% - 24px);
+    box-shadow: 4px 4px 4px orangered;
+}
+.DetailsMain{
+    display: flex;
+    justify-content: center;
+}

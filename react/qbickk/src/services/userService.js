@@ -3,7 +3,7 @@ import {urls} from "../constants/urls";
 
 const userService = {
     getAll: ()=>axiosService.get(urls.users.base),
-    getById: (id)=>axiosService.get(urls.users.byID(id))
+    getUserById: (id)=>axiosService.get(urls.users.byId(id))
 }
 
 export {

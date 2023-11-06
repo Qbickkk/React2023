@@ -1,14 +1,14 @@
 const baseURL = 'https://jsonplaceholder.typicode.com';
-const users = '/users';
 
+const users = '/users';
 
 const urls = {
     users:{
-    base: users,
-    byID: (id)=> `${users}/${id}`
+        base: users,
+        byId: (id) => `${users}/${id}`
     }
 }
 
-export {
-    baseURL, urls
-}
+ export {
+     baseURL, urls
+ }

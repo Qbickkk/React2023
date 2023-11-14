@@ -1,23 +1,22 @@
-import React, {useRef} from 'react';
+import React, { useState} from 'react';
 
 const App = () => {
 
-    const name = useRef();
-    const age = useRef();
+    const [user, setUser] = useState({})
 
-
-    const save = (event) => {
+   const handler = (event) => {
         event.preventDefault();
-        console.log(name.current.value);
-        console.log(age.current.value);
-        event.target.reset();
-    }
+        setUser(prevState => ({...prevState, [event.target.name] : event.target.value}))
+
+   }
+
+   console.log(user)
 
     return (
 
-            <form onSubmit={save}>
-                <input type={"text"} placeholder={'name'} ref={name}/>
-                <input type={"number"} placeholder={'age'} ref={age}/>
+            <form>
+                <input type={"text"} placeholder={'name'} name={'name'} onChange={handler}/>
+                <input type={"number"} placeholder={'age'} name={'age'}  onChange={handler}/>
                 <button>Save</button>
             </form>
 

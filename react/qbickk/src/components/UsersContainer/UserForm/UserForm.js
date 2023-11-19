@@ -7,6 +7,7 @@ const UserForm = ({setUsers}) => {
     const save = async (user) => {
         const {data} = await usersService.postUser(user);
         setUsers(prev=>[...prev, data]);
+        reset();
     }
     return (
         <form onSubmit={handleSubmit(save)}>

@@ -3,6 +3,7 @@ import {MainPage} from "../pages/MainPage";
 import {ErrorPage} from "../pages/ErrorPage";
 import {UsersPage} from "../pages/UsersPage";
 import {PostsPage} from "../pages/PostsPage";
+import {UserDetailsPage} from "../pages/UserDetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path:'users',
                 element: <UsersPage/>
+            },
+            {
+                path: '/users/details',
+                element: <UserDetailsPage/>
             },
             {
                 path: 'posts',

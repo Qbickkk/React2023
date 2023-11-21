@@ -10,7 +10,9 @@ const MainPage = () => {
                 <li><Link to={'posts'}>posts</Link></li>
                 <li><Link to={'users'}>users</Link></li>
             </ul>
+            <hr/>
             <Outlet/>
+            <hr/>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import {ErrorPage} from "../pages/ErrorPage";
 import {UsersPage} from "../pages/UsersPage";
 import {PostsPage} from "../pages/PostsPage";
 import {UserDetailsPage} from "../pages/UserDetailsPage";
+import {PostDetailsPage} from "../pages/PostDetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: 'posts',
                 element: <PostsPage/>
+            },
+            {
+                path: 'posts/details',
+                element: <PostDetailsPage/>
             }
         ]
     }

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
+import {A} from "./components/A";
 
-import App from './App';
+
+export let Context = createContext('default');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
-    <App />
-  </>
+  <Context.Provider value={'asdqwe'}>
+      index component
+    <A/>
+  </Context.Provider>
 );
 

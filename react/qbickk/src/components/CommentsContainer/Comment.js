@@ -1,0 +1,16 @@
+import React from 'react';
+
+const Comment = ({comment}) => {
+    const {postId,id,email,body} = comment;
+    return (
+        <div>
+            <div>postId:{postId}</div>
+            <div>id:{id}</div>
+            <div>email:{email}</div>
+            <div>body:{body}</div>
+            <hr/>
+        </div>
+    );
+};
+
+export {Comment}

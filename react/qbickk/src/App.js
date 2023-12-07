@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {createContext} from 'react';
+import {A} from "./components/A";
 
+
+const Context = createContext(null);
 const App = () => {
     return (
-        <div>
-            App
-        </div>
+        <Context.Provider value={'hello'}>
+            <A/>
+        </Context.Provider>
     );
 };
 
-export default App;
+export {App, Context};

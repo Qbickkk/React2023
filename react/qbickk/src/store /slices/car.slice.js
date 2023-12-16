@@ -15,5 +15,5 @@ const carSlice = createSlice({
 
 const carReducer = carSlice.reducer;
 
-export default carReducer
+export default carReducer;
 

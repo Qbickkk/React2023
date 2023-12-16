@@ -3,7 +3,10 @@
     justify-content: center;
     align-items: center;
     height: 60px;
-    background-color: blueviolet;
-    color: lawngreen;
-    font-size: 40px;
+    font-size: 30px;
+    background-color: black;
+    color: snow;
+}
+.Header a {
+    text-decoration: none;
 }

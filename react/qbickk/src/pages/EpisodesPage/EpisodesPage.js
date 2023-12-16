@@ -1,6 +1,6 @@
 import React from 'react';
+import {Episodes} from "../../components";
 
-import {Episodes} from "../components/EpisodesContainer/Episodes";
 const EpisodesPage = () => {
     return (
         <div>

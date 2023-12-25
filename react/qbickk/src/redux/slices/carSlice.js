@@ -1,88 +1,89 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
 import {carService} from "../../services";
+
 
 const initialState = {
     cars: [],
     errors: null,
     isLoading: null,
-    trigger: null
+    trigger: null,
+    carForUpdate: null
 };
 
 const getAll = createAsyncThunk(
-  'carSlice/getAll',
-  async (_,thunkAPI)=>{
-      try {
-          const {data} = carService.getAll();
-          return thunkAPI.fulfillWithValue(data);
-      }catch (e) {
-          return thunkAPI.rejectWithValue(e.response.data)
-      }
-  }
-);
-
-const create = createAsyncThunk(
-    'carSlice/create',
-    async ({car}, thunkAPI) => {
+    'carSlice/getAll',
+    async (_,thunkAPI)=>{
         try {
-            await carService.create(car)
-
+            const {data} = await carService.getAll();
+            return thunkAPI.fulfillWithValue(data);
         }catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
         }
     }
 );
 
+const create = createAsyncThunk(
+    'carSlice/create',
+    async ({car},thunkAPI)=>{
+        try {
+            await carService.create(car);
+        }catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data)
+        }
+    }
+);
+
+const updateById = createAsyncThunk(
+    'carSlice/updateById',
+    async ({id,car}, thunkAPI)=>{
+        try {
+            await carService.updateById(id, car)
+        }catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data)
+        }
+    }
+);
 
 const carSlice = createSlice({
    name: 'carSlice',
-   initialState,
-   reducers:{
-        // setCars:(state,action)=> {
-        //     state.cars = action.payload
-        // }
-   },
-   // extraReducers:{
-   //     [getAll.fulfilled] : (state, action) => {
-   //         state.cars = action.payload
-   //         state.isLoading = false
-   //         state.errors = null
-   //     },
-   //     [getAll.rejected] : (state, action) => {
-   //          state.errors = action.payload
-   //         state.isLoading = false
-   //     },
-   //     [getAll.pending] : state => {
-   //          state.isLoading = true
-   //     }
-   // }
+    initialState,
+    reducers:{
+        setCarForUpdate:(state,action)=>{
+            state.carForUpdate = action.payload.car
+        }
+    },
     extraReducers: builder =>
         builder
-            .addCase(getAll.fulfilled, (state, action) => {
-                        state.cars = action.payload
-                        state.isLoading = false
-                        state.errors = null
+            .addCase(getAll.fulfilled, (state, action)=>{
+                state.cars = action.payload
             })
-            .addCase(getAll.rejected, (state, action) => {
-                        state.errors = action.payload
-                        state.isLoading = false
+            .addCase(create.fulfilled, state=>{
+                state.trigger = !state.trigger
             })
-            .addCase(getAll.pending, state => {
-                        state.isLoading = true
+            .addCase(updateById.fulfilled, state => {
+                state.trigger = !state.trigger
+                state.carForUpdate = null
             })
-            .addCase(create.fulfilled, state => {
-                        state.trigger = !state.trigger
+            .addMatcher(isFulfilled(getAll,create, updateById),state => {
+                state.isLoading = false
+                state.errors = null
+            })
+            .addMatcher(isRejected(getAll,create, updateById), (state, action)=>{
+                state.errors = action.payload
+                state.isLoading = false
+            })
+            .addMatcher(isPending(getAll,create, updateById), state => {
+                state.isLoading = true
             })
 });
-
 
 const {reducer: carReducer, actions} = carSlice;
 
 const carActions = {
-    ...actions, getAll, create
+    ...actions, getAll, create, updateById
 };
 
 export {
     carReducer,
     carActions
-};
-
+}

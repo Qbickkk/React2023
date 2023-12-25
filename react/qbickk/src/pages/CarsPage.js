@@ -1,13 +1,14 @@
 import React from 'react';
-
 import {CarForm, Cars} from "../components";
 import {useSelector} from "react-redux";
 
 const CarsPage = () => {
+
     const {errors} = useSelector(state => state.cars);
+
     return (
         <div>
-            {errors && <h2>{errors.detail}</h2>}
+            {errors && <h1>{JSON.stringify(errors)}</h1>}
             <CarForm/>
             <hr/>
             <Cars/>
